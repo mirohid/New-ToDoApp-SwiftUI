@@ -24,14 +24,26 @@ struct ContentView: View {
                     CustomSearchBar(text: $searchText)
                     
                     // Task list
-                    ScrollView {
-                        LazyVStack(spacing: 15) {
-                            ForEach(taskViewModel.filteredTasks(searchText)) { task in
-                                TaskRowView(task: task, viewModel: taskViewModel)
-                            }
+                    // Task list
+                    List {
+                        ForEach(taskViewModel.filteredTasks(searchText)) { task in
+                            TaskRowView(task: task, viewModel: taskViewModel)
+                                .listRowInsets(EdgeInsets())
+                                .listRowBackground(Color.clear)
+                                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                    Button(role: .destructive) {
+                                        withAnimation {
+                                            taskViewModel.deleteTask(task)
+                                        }
+                                    } label: {
+                                        Label("Delete", systemImage: "trash")
+                                    }
+                                }
                         }
-                        .padding(.horizontal)
+                        .listRowSeparator(.hidden)
                     }
+                    .listStyle(.plain)
+                    .padding(.horizontal)
                 }
             }
             .navigationTitle("My Tasks")
