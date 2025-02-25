@@ -25,6 +25,13 @@ struct ContentView: View {
                     
                     // Task list
                     // Task list
+                    
+                    if taskViewModel.filteredTasks(searchText).isEmpty {
+                        Text("No tasks found")
+                            .font(.headline)
+                            .foregroundColor(.secondary)
+                    }
+                    
                     List {
                         ForEach(taskViewModel.filteredTasks(searchText)) { task in
                             TaskRowView(task: task, viewModel: taskViewModel)
