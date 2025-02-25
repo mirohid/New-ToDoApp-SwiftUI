@@ -74,6 +74,14 @@ struct CustomSearchBar: View {
             
             TextField("Search tasks...", text: $text)
                 .textFieldStyle(PlainTextFieldStyle())
+            
+            if !text.isEmpty {
+                Image(systemName: "xmark.circle.fill")
+                    .foregroundColor(.gray)
+                    .onTapGesture {
+                        text = ""
+                    }
+            }
         }
         .padding()
         .background(Color(.systemGray6))
