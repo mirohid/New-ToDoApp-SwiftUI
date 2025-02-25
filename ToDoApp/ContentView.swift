@@ -429,7 +429,7 @@ struct ContentView: View {
 
 // MARK: - Helper Views
 struct TaskSummaryView: View {
-    let viewModel: TaskViewModel
+    @ObservedObject var viewModel: TaskViewModel
     
     var body: some View {
         HStack(spacing: 15) {
