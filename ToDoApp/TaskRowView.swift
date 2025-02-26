@@ -84,5 +84,3 @@ struct CategoryBadge: View {
             .cornerRadius(8)
     }
 }
-
-// End of file. No additional code.

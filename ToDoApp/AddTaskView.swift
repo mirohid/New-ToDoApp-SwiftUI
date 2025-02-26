@@ -78,4 +78,3 @@ struct AddTaskView: View {
     }
 }
 
-// End of file. No additional code.
